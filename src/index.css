@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-deep: #004836;
+  --color-brand-neon: #04d939;
+  --color-brand-light: #f7fbf8;
+  --color-brand-offwhite: #eef3e4;
+  --color-brand-dark: #0a1a10;
+  --color-brand-border: #e4ede8;
+  
+  --font-sans: "DM Sans", "Segoe UI", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --animate-pulse-slow: pulse 2s ease-in-out infinite;
+  --animate-spin-slow: spin 3s linear infinite;
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes gridShift {
+    0%, 100% { background-position: 0 0; }
+    50% { background-position: 10px 10px; }
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+}
+
+
+@layer base {
+  :root {
+    --brand-deep: #004836;
+    --brand-neon: #04d939;
+    --brand-light: #f7fbf8;
+    --brand-offwhite: #eef3e4;
+    --brand-dark: #0a1a10;
+    --brand-border: #e4ede8;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+  }
+
+  body {
+    background-color: var(--brand-light);
+    color: var(--brand-dark);
+    font-family: var(--font-sans);
+  }
+}
+
+/* Dashboard Specific Utilities */
+@layer components {
+  .dashboard-card {
+    @apply bg-white border border-brand-border rounded-[20px] p-6 transition-all duration-300 hover:border-brand-neon/40 hover:shadow-[0_16px_48px_rgba(0,72,54,0.06)];
+  }
+
+  .stat-label {
+    @apply text-[11px] font-bold tracking-[2px] uppercase text-[#6b8a78] mb-1 block;
+  }
+
+  .stat-value {
+    @apply font-serif text-[28px] font-bold text-brand-dark leading-tight;
+  }
+
+  .btn-primary {
+    @apply bg-brand-deep text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 hover:bg-brand-neon hover:text-brand-deep hover:scale-105;
+  }
+}
